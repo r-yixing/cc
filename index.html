@@ -10,6 +10,1518 @@
             --cream: #FBF8F3;
             --sage: #A8B5A0;
             --deep-sage: #5F7158;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decoded - Skincare, Decoded.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FBF8F3;
+            --sage: #A8B5A0;
+            --deep-sage: #5F7158;
+            --clay: #D4A89A;
+            --terra: #B67B68;
+            --charcoal: #2C2C2C;
+            --soft-white: #FFFFFF;
+            --glow-pink: #FFE8E0;
+            --warning: #E8A87C;
+            --success: #7FB685;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Epilogue', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            background: rgba(251, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(168, 181, 160, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--deep-sage);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-sage);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--deep-sage);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--deep-sage);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(95, 113, 88, 0.2);
+        }
+
+        .cta-nav:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(95, 113, 88, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            background: linear-gradient(135deg, var(--cream) 0%, #F0EBE3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(168, 181, 160, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero-tagline {
+            font-family: 'Fraunces', serif;
+            font-size: 28px;
+            color: var(--terra);
+            margin-bottom: 16px;
+            font-weight: 600;
+            animation: slideUp 0.8s ease-out 0.1s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: var(--deep-sage);
+            margin-bottom: 40px;
+            line-height: 1.7;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn-primary {
+            background: var(--deep-sage);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(95, 113, 88, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--charcoal);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(95, 113, 88, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--deep-sage);
+            padding: 18px 40px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--sage);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage);
+            color: white;
+            border-color: var(--sage);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        .phone-mockup {
+            background: white;
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            border-radius: 30px;
+            padding: 40px 24px;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .scan-demo {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .scan-demo h3 {
+            font-size: 16px;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .ingredient-list {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .result-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success), var(--deep-sage));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Problem Statement Section */
+        .problem-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .problem-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 42px;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .problem-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .problem-list {
+            list-style: none;
+        }
+
+        .problem-list li {
+            padding: 16px 0;
+            font-size: 16px;
+            color: var(--charcoal);
+            border-left: 3px solid var(--terra);
+            padding-left: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .problem-list li:hover {
+            border-left-color: var(--deep-sage);
+            transform: translateX(5px);
+        }
+
+        .problem-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .problem-card {
+            background: var(--cream);
+            padding: 32px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .problem-card h4 {
+            font-size: 18px;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .problem-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--soft-white) 0%, var(--cream) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: var(--deep-sage);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .comparison-card.highlight {
+            background: linear-gradient(135deg, var(--deep-sage), var(--sage));
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .comparison-card.highlight:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .comparison-logo {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .comparison-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .comparison-card.highlight h3,
+        .comparison-card.highlight p,
+        .comparison-card.highlight li {
+            color: white;
+        }
+
+        .comparison-type {
+            font-size: 13px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-features {
+            list-style: none;
+        }
+
+        .comparison-features li {
+            padding: 12px 0;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .comparison-card.highlight .comparison-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .comparison-features li::before {
+            content: '✓';
+            margin-right: 10px;
+            font-weight: 700;
+            color: var(--success);
+            flex-shrink: 0;
+        }
+
+        .comparison-features li.missing::before {
+            content: '✗';
+            color: var(--terra);
+        }
+
+        .comparison-card.highlight .comparison-features li::before {
+            color: white;
+        }
+
+        .comparison-card.highlight .comparison-features li.missing::before {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: var(--soft-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--cream);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage), var(--clay));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--sage), var(--deep-sage));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Value Prop Section */
+        .value-prop {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--deep-sage) 0%, var(--sage) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-prop::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .value-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .value-prop h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .value-prop p {
+            font-size: 22px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .value-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .value-highlight {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 32px 24px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .value-highlight:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .value-highlight-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .value-highlight h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .value-highlight p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--soft-white) 0%, var(--cream) 100%);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step::after {
+            content: '→';
+            position: absolute;
+            top: 40px;
+            right: -20px;
+            font-size: 32px;
+            color: var(--sage);
+            opacity: 0.4;
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--clay), var(--terra));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 25px rgba(182, 123, 104, 0.3);
+        }
+
+        .step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 120px 0;
+            background: var(--soft-white);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+
+        .pricing-card {
+            background: var(--cream);
+            padding: 50px 40px;
+            border-radius: 30px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--deep-sage), var(--sage));
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 25px 60px rgba(95, 113, 88, 0.3);
+        }
+
+        .pricing-card.featured * {
+            color: white;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--sage);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            right: 40px;
+            background: var(--terra);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-name {
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--deep-sage);
+        }
+
+        .pricing-card.featured .plan-name {
+            color: white;
+        }
+
+        .price {
+            font-size: 56px;
+            font-weight: 700;
+            font-family: 'Fraunces', serif;
+            margin-bottom: 8px;
+        }
+
+        .price-period {
+            font-size: 16px;
+            opacity: 0.7;
+            margin-bottom: 32px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 15px;
+        }
+
+        .pricing-card.featured .features-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            margin-right: 12px;
+            font-weight: 700;
+            color: var(--deep-sage);
+        }
+
+        .pricing-card.featured .features-list li::before {
+            color: white;
+        }
+
+        .btn-pricing {
+            width: 100%;
+            padding: 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pricing.primary {
+            background: white;
+            color: var(--deep-sage);
+        }
+
+        .btn-pricing.secondary {
+            background: transparent;
+            color: var(--deep-sage);
+            border: 2px solid var(--deep-sage);
+        }
+
+        .btn-pricing:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Target Audience Section */
+        .audience-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .audience-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .audience-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .audience-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .audience-card p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--deep-sage) 0%, var(--sage) 100%);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--deep-sage);
+            padding: 20px 50px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-card.highlight {
+                transform: scale(1);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .value-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .step::after {
+                display: none;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Decoded</div>
+                <ul class="nav-links">
+                    <li><a href="#problem">The Problem</a></li>
+                    <li><a href="#solution">Our Solution</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+                <a href="app/index.html" class="cta-nav">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-tagline">Skincare, Decoded.</div>
+                    <h1>Stop Guessing. Start Knowing.</h1>
+                    <p>We prevent skin damage before it happens with AI-powered analysis that's actually educational, personalized to your skin type, and refreshingly simple.</p>
+                    <div class="hero-buttons">
+                        <a href="app/index.html" class="btn-primary">Try Free Scanner →</a>
+                        <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="scan-demo">
+                                <h3>Analyzing for Dry, Sensitive Skin...</h3>
+                                <div class="ingredient-list">
+                                    Water, Glycerin, Niacinamide, Hyaluronic Acid, Ceramides...
+                                </div>
+                                <span class="result-badge">✓ Great Match - 95% Compatible</span>
+                            </div>
+                            <div class="scan-demo">
+                                <h3>Why This Works For You</h3>
+                                <p style="font-size: 13px; color: #666; line-height: 1.6;">
+                                    Niacinamide strengthens your skin barrier (which your sensitive skin needs!), while ceramides and hyaluronic acid provide deep hydration without irritants.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem" class="problem-section">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2>Skincare Shouldn't Be This Confusing</h2>
+                    <p>Every day, millions of people waste money on products that damage their skin because they have no way to know what actually works for them.</p>
+                    <ul class="problem-list">
+                        <li><strong>Misleading ads and trends</strong> push products that look good but might harm your specific skin type</li>
+                        <li><strong>Wrong products waste money</strong> and damage your confidence when you break out or react</li>
+                        <li><strong>Confusing jargon</strong> makes ingredient lists feel like a foreign language</li>
+                        <li><strong>One-size-fits-all advice</strong> ignores that your skin is unique</li>
+                    </ul>
+                </div>
+                <div class="problem-visual">
+                    <div class="problem-card">
+                        <div class="problem-icon">💸</div>
+                        <h4>$382 Wasted</h4>
+                        <p>Average amount spent annually on ineffective skincare products</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">😔</div>
+                        <h4>72% Confused</h4>
+                        <p>Of people feel overwhelmed by skincare ingredient lists</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">⚠️</div>
+                        <h4>Preventable Damage</h4>
+                        <p>Most skin reactions could be avoided with proper guidance</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">🤔</div>
+                        <h4>Information Overload</h4>
+                        <p>Conflicting advice from influencers, ads, and forums</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="comparison-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Decoded Is Different</h2>
+                <p>Compare us to existing alternatives and see the difference</p>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <div class="comparison-logo">📊</div>
+                        <h3>EWG Skin Deep</h3>
+                        <p class="comparison-type">Ingredient Database</p>
+                    </div>
+                    <ul class="comparison-features">
+                        <li>Large ingredient database</li>
+                        <li>Human-curated information</li>
+                        <li>Product safety ratings</li>
+                        <li class="missing">No personalization for your skin type</li>
+                        <li class="missing">No education component</li>
+                        <li class="missing">Looks at ingredients individually</li>
+                        <li class="missing">Full of technical jargon</li>
+                    </ul>
+                </div>
+                <div class="comparison-card highlight">
+                    <div class="comparison-header">
+                        <div class="comparison-logo">✨</div>
+                        <h3>Decoded</h3>
+                        <p class="comparison-type">AI-Powered Coach</p>
+                    </div>
+                    <ul class="comparison-features">
+                        <li>Personalized to YOUR skin type</li>
+                        <li>Educational explanations you understand</li>
+                        <li>Analyzes ingredient interactions</li>
+                        <li>Budget-conscious alternatives</li>
+                        <li>Progress tracking over time</li>
+                        <li>Dermatologist referral network</li>
+                        <li>Prevents damage before it happens</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <div class="comparison-logo">🔍</div>
+                        <h3>Other Apps</h3>
+                        <p class="comparison-type">Generic Scanners</p>
+                    </div>
+                    <ul class="comparison-features">
+                        <li>Ingredient scanning</li>
+                        <li>Basic product information</li>
+                        <li class="missing">Often have language barriers</li>
+                        <li class="missing">No skin type consideration</li>
+                        <li class="missing">Limited alternative suggestions</li>
+                        <li class="missing">No professional referrals</li>
+                        <li class="missing">Focus on what's wrong, not what's right</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-prop">
+        <div class="container">
+            <div class="value-content">
+                <h2>Your Skincare Confidence, Simplified</h2>
+                <p>We prevent skin damage before it happens by giving you clear, educational analysis tailored to your unique skin type. Save money, save your skin, and actually understand what you're using.</p>
+                <div class="value-highlights">
+                    <div class="value-highlight">
+                        <div class="value-highlight-icon">🛡️</div>
+                        <h3>Prevention First</h3>
+                        <p>Stop problems before they start by identifying irritants and mismatches</p>
+                    </div>
+                    <div class="value-highlight">
+                        <div class="value-highlight-icon">🎓</div>
+                        <h3>Learn As You Shop</h3>
+                        <p>Build your skincare knowledge with every scan—no jargon, just clarity</p>
+                    </div>
+                    <div class="value-highlight">
+                        <div class="value-highlight-icon">💰</div>
+                        <h3>Budget-Friendly</h3>
+                        <p>Get alternatives filtered by your budget so you never overspend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything Your Skin Needs</h2>
+                <p>Comprehensive analysis and guidance for healthier skin</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Onboarding</h3>
+                    <p>Quick quiz to identify your unique skin type, concerns, and budget. Get recommendations tailored specifically to you from day one.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Smart Ingredient Analysis</h3>
+                    <p>Scan or type any product's ingredient list for instant AI-powered analysis that considers ingredient interactions, not just individual components.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>Clear Product Ratings</h3>
+                    <p>Simple "Great Match," "Proceed with Caution," or "Not a Match" ratings. No confusing scores or overwhelming data—just clear answers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Educational Explanations</h3>
+                    <p>Understand why each product is or isn't suitable for YOUR skin. We explain the science in plain English so you learn with every scan.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Better Alternatives</h3>
+                    <p>For poor matches, get instant suggestions for better products filtered by your budget. Never leave empty-handed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Premium Features</h3>
+                    <p>Track your skin's progress over time, get detailed reports, enjoy unlimited scans, and access our dermatologist referral network.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Get personalized skincare recommendations in minutes</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Take the Quiz</h3>
+                    <p>Answer quick questions about your skin type, concerns, and budget</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Scan Products</h3>
+                    <p>Take a photo or type in ingredient lists while shopping</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Analysis</h3>
+                    <p>Receive instant compatibility ratings with educational explanations</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Shop Smart</h3>
+                    <p>Choose products confidently and track your skin's improvement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="audience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Who We Help</h2>
+                <p>Decoded is perfect for anyone who wants better skin without the guesswork</p>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">🆕</div>
+                    <h3>Skincare Beginners</h3>
+                    <p>New to skincare and overwhelmed by jargon? We break down every ingredient and explain what works for you in plain English.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">⚕️</div>
+                    <h3>Sensitive Skin Warriors</h3>
+                    <p>Tired of reactions and breakouts? We identify potential irritants before you buy, preventing damage and saving you money.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">💰</div>
+                    <h3>Budget-Conscious Shoppers</h3>
+                    <p>Want great skin without breaking the bank? Get effective alternatives at every price point that actually work for your skin type.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">📱</div>
+                    <h3>Trend-Confused Consumers</h3>
+                    <p>Confused by conflicting influencer advice? We cut through the noise with science-backed, personalized recommendations just for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="try-demo-section" style="padding: 100px 0; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Try It Yourself</h2>
+                <p>Experience AI-powered skincare analysis right now - no credit card required</p>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="app/index.html" class="btn-primary" style="display: inline-block; padding: 20px 50px; font-size: 18px; text-decoration: none;">
+                    🚀 Launch Free Scanner
+                </a>
+                <p style="margin-top: 16px; color: #666; font-size: 14px;">
+                    Takes 2 minutes to get started • Free forever • No payment info needed
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Plan</h2>
+                <p>Start free and upgrade when you're ready for unlimited access</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="plan-name">Free</div>
+                    <div class="price">$0</div>
+                    <div class="price-period">Forever</div>
+                    <ul class="features-list">
+                        <li>5 product scans per month</li>
+                        <li>Basic ingredient analysis</li>
+                        <li>Simple match ratings</li>
+                        <li>Budget-filtered alternatives</li>
+                        <li>Educational explanations</li>
+                        <li>Community support</li>
+                    </ul>
+                    <a href="app/index.html" class="btn-pricing secondary" style="display: block; text-align: center; text-decoration: none;">Start Free</a>
+                </div>
+                <div class="pricing-card featured">
+                    <span class="plan-badge">Most Popular</span>
+                    <div class="plan-name">Premium</div>
+                    <div class="price">$9</div>
+                    <div class="price-period">per month</div>
+                    <ul class="features-list">
+                        <li>Unlimited product scans</li>
+                        <li>Advanced ingredient analysis</li>
+                        <li>Detailed compatibility reports</li>
+                        <li>Skin progress tracking over time</li>
+                        <li>Dermatologist referrals in your area</li>
+                        <li>Free product samples (regular)</li>
+                        <li>Priority support</li>
+                        <li>Early access to new features</li>
+                    </ul>
+                    <a href="app/index.html" class="btn-pricing primary" style="display: block; text-align: center; text-decoration: none;">Start 14-Day Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready for Healthier, Smarter Skincare?</h2>
+                <p>Join thousands of users making confident, informed choices that actually work for their skin</p>
+                <a href="app/index.html" class="btn-cta">Start Free Trial →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Decoded</h3>
+                    <p>Skincare, Decoded. AI-powered analysis for healthier, more informed choices. Prevention starts with knowledge.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Dermatologist Network</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Decoded. All rights reserved. Made with care for your skin.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.feature-card, .step, .pricing-card, .problem-card, .comparison-card, .audience-card, .value-highlight').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effect to comparison cards
+        document.querySelectorAll('.comparison-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
+        });
+    </script>
+</body>
+</html>
             --clay: #D4A89A;
             --terra: #B67B68;
             --charcoal: #2C2C2C;
