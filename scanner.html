@@ -12,6 +12,730 @@
     <title>Decoded - Product Scanner</title>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
     <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decoded - Product Scanner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FBF8F3;
+            --sage: #A8B5A0;
+            --deep-sage: #5F7158;
+            --clay: #D4A89A;
+            --terra: #B67B68;
+            --charcoal: #2C2C2C;
+            --soft-white: #FFFFFF;
+            --success: #7FB685;
+            --warning: #E8A87C;
+            --danger: #D47B7B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Epilogue', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #F0EBE3 100%);
+            color: var(--charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--deep-sage);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-badge {
+            background: linear-gradient(135deg, var(--sage), var(--deep-sage));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            color: var(--deep-sage);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .welcome-section h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 42px;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .scanner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .scanner-card, .results-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 28px;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+        }
+
+        .profile-reminder {
+            background: linear-gradient(135deg, rgba(168, 181, 160, 0.15), rgba(168, 181, 160, 0.05));
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--deep-sage);
+        }
+
+        .profile-reminder-title {
+            font-weight: 700;
+            color: var(--deep-sage);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .profile-info {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .edit-profile-btn {
+            background: transparent;
+            color: var(--deep-sage);
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            font-family: 'Epilogue', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+
+        .scan-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--deep-sage), var(--sage));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(95, 113, 88, 0.3);
+        }
+
+        .scan-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(95, 113, 88, 0.4);
+        }
+
+        .scan-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .examples {
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--cream);
+            border-radius: 12px;
+        }
+
+        .examples-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .example-btn {
+            background: white;
+            border: 2px solid var(--sage);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            margin: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .example-btn:hover {
+            background: var(--sage);
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--deep-sage);
+        }
+
+        .spinner {
+            border: 3px solid rgba(95, 113, 88, 0.1);
+            border-top: 3px solid var(--deep-sage);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #999;
+        }
+
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .result-card {
+            padding: 28px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card.great-match {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            border-left: 5px solid var(--success);
+        }
+
+        .result-card.caution {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border-left: 5px solid var(--warning);
+        }
+
+        .result-card.not-match {
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+            border-left: 5px solid var(--danger);
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .result-card.great-match .result-badge {
+            background: var(--success);
+            color: white;
+        }
+
+        .result-card.caution .result-badge {
+            background: var(--warning);
+            color: white;
+        }
+
+        .result-card.not-match .result-badge {
+            background: var(--danger);
+            color: white;
+        }
+
+        .result-card h3 {
+            font-size: 22px;
+            color: var(--charcoal);
+            margin-bottom: 14px;
+        }
+
+        .result-card p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .key-ingredients {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .key-ingredients h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--charcoal);
+        }
+
+        .key-ingredients ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .key-ingredients li {
+            padding: 8px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .key-ingredients li::before {
+            content: '• ';
+            color: var(--deep-sage);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .scan-history {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #E0E0E0;
+        }
+
+        .scan-count {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 968px) {
+            .scanner-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-section h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Decoded</div>
+            <div class="user-profile">
+                <div class="profile-badge" id="userBadge">Loading...</div>
+                <a href="#" class="logout-btn" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h1>Welcome back, <span id="userName">User</span>! 👋</h1>
+            <p>Ready to analyze some products?</p>
+        </div>
+
+        <div class="scanner-grid">
+            <div class="scanner-card">
+                <h2>📸 Scan Product</h2>
+
+                <div class="profile-reminder">
+                    <div class="profile-reminder-title">Your Profile</div>
+                    <div class="profile-info" id="profileInfo">
+                        Loading profile...
+                    </div>
+                    <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredients">Product Ingredients</label>
+                    <textarea 
+                        id="ingredients" 
+                        placeholder="Paste or type the ingredient list from your product...
+
+Example: Water, Glycerin, Niacinamide, Hyaluronic Acid, Ceramides..."
+                    ></textarea>
+                </div>
+
+                <button class="scan-btn" onclick="scanProduct()">
+                    🔬 Analyze for My Skin
+                </button>
+
+                <div class="examples">
+                    <div class="examples-title">Try an example:</div>
+                    <button class="example-btn" onclick="loadExample('moisturizer')">Moisturizer</button>
+                    <button class="example-btn" onclick="loadExample('serum')">Vitamin C Serum</button>
+                    <button class="example-btn" onclick="loadExample('cleanser')">Cleanser</button>
+                    <button class="example-btn" onclick="loadExample('sunscreen')">Sunscreen</button>
+                </div>
+
+                <div class="scan-count" id="scanCount"></div>
+            </div>
+
+            <div class="results-card">
+                <h2>🎯 Results</h2>
+                <div id="results">
+                    <div class="empty-state">
+                        <div class="empty-icon">🔍</div>
+                        <p><strong>No scans yet</strong></p>
+                        <p>Enter product ingredients and we'll analyze them for your skin type</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let userProfile = null;
+        let scanCount = 0;
+
+        // Example products
+        const examples = {
+            moisturizer: "Water, Glycerin, Niacinamide, Hyaluronic Acid, Ceramide NP, Ceramide AP, Ceramide EOP, Carbomer, Dimethicone, Cetearyl Alcohol, Behentrimonium Methosulfate",
+            serum: "Aqua, Ascorbic Acid, Ethoxydiglycol, Propylene Glycol, Alpha Tocopherol, Panthenol, Ferulic Acid, Sodium Hyaluronate, Phenoxyethanol",
+            cleanser: "Water, Sodium Cocoyl Isethionate, Stearic Acid, Cocamidopropyl Betaine, Glycerin, Sodium Chloride, Phenoxyethanol",
+            sunscreen: "Water, Zinc Oxide, Octocrylene, Glycerin, Titanium Dioxide, Niacinamide, Hyaluronic Acid, Tocopheryl Acetate"
+        };
+
+        // Load user data
+        function loadUserData() {
+            const currentUserEmail = localStorage.getItem('decoded_current_user');
+            if (!currentUserEmail) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('decoded_users') || '{}');
+            currentUser = users[currentUserEmail];
+
+            if (!currentUser || !currentUser.profile) {
+                window.location.href = 'onboarding.html';
+                return;
+            }
+
+            userProfile = currentUser.profile;
+            
+            // Update UI
+            document.getElementById('userName').textContent = currentUser.name.split(' ')[0];
+            document.getElementById('userBadge').textContent = getSkinTypeEmoji(userProfile.skinType) + ' ' + capitalize(userProfile.skinType) + ' Skin';
+
+            // Display profile
+            const concernsText = userProfile.concerns.length > 0 
+                ? userProfile.concerns.map(c => capitalize(c)).join(', ')
+                : 'None';
+
+            document.getElementById('profileInfo').innerHTML = `
+                <strong>Skin Type:</strong> ${capitalize(userProfile.skinType)}<br>
+                <strong>Concerns:</strong> ${concernsText}<br>
+                <strong>Budget:</strong> ${userProfile.budget}
+            `;
+
+            // Load scan count
+            scanCount = currentUser.scanCount || 0;
+            updateScanCount();
+        }
+
+        function getSkinTypeEmoji(type) {
+            const emojis = {
+                dry: '💧',
+                oily: '✨',
+                combination: '🔄',
+                sensitive: '🌸',
+                normal: '😊'
+            };
+            return emojis[type] || '😊';
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function updateScanCount() {
+            const isFree = !currentUser.isPremium;
+            const limit = isFree ? 5 : 999999;
+            const remaining = Math.max(0, limit - scanCount);
+
+            if (isFree) {
+                document.getElementById('scanCount').innerHTML = `
+                    ${remaining} free scans remaining this month. 
+                    <a href="#" style="color: var(--deep-sage); font-weight: 600;">Upgrade to Premium</a> for unlimited scans!
+                `;
+            } else {
+                document.getElementById('scanCount').innerHTML = `
+                    ✨ Premium: Unlimited scans
+                `;
+            }
+        }
+
+        function loadExample(type) {
+            document.getElementById('ingredients').value = examples[type];
+        }
+
+        async function scanProduct() {
+            const ingredients = document.getElementById('ingredients').value.trim();
+            
+            if (!ingredients) {
+                alert('Please enter product ingredients');
+                return;
+            }
+
+            // Check scan limit (free users)
+            if (!currentUser.isPremium && scanCount >= 5) {
+                alert('You\'ve reached your free scan limit! Upgrade to Premium for unlimited scans.');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('results');
+            const scanBtn = document.querySelector('.scan-btn');
+
+            // Show loading
+            scanBtn.disabled = true;
+            scanBtn.textContent = '🔬 Analyzing...';
+            resultsDiv.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing for your ${userProfile.skinType} skin...</p>
+                    <p style="font-size: 14px; color: #999; margin-top: 8px;">Checking ingredient interactions...</p>
+                </div>
+            `;
+
+            // Simulate AI analysis (in production, call your backend API)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Perform analysis
+            const analysis = analyzeIngredients(ingredients);
+            displayResults(analysis);
+
+            // Increment scan count
+            scanCount++;
+            currentUser.scanCount = scanCount;
+            
+            const users = JSON.parse(localStorage.getItem('decoded_users'));
+            users[currentUser.email].scanCount = scanCount;
+            localStorage.setItem('decoded_users', JSON.stringify(users));
+
+            updateScanCount();
+
+            // Re-enable button
+            scanBtn.disabled = false;
+            scanBtn.textContent = '🔬 Analyze for My Skin';
+        }
+
+        function analyzeIngredients(ingredients) {
+            const lower = ingredients.toLowerCase();
+            const skinType = userProfile.skinType;
+            const concerns = userProfile.concerns;
+
+            let rating = 'Great Match';
+            let explanation = '';
+            let beneficial = [];
+            let concernsList = [];
+
+            // Check for beneficial ingredients
+            if (lower.includes('niacinamide')) {
+                beneficial.push('Niacinamide: Strengthens your skin barrier - perfect for ' + skinType + ' skin');
+            }
+            if (lower.includes('hyaluronic acid') || lower.includes('sodium hyaluronate')) {
+                beneficial.push('Hyaluronic Acid: Deep hydration without heaviness');
+            }
+            if (lower.includes('ceramide')) {
+                beneficial.push('Ceramides: Restores and protects your skin barrier');
+            }
+            if (lower.includes('glycerin')) {
+                beneficial.push('Glycerin: Draws moisture to your ' + skinType + ' skin');
+            }
+            if (lower.includes('vitamin c') || lower.includes('ascorbic acid')) {
+                beneficial.push('Vitamin C: Brightens and evens skin tone');
+            }
+
+            // Check for concerns based on skin type
+            if (skinType === 'oily' && (lower.includes('mineral oil') || lower.includes('coconut oil'))) {
+                concernsList.push('Heavy oils: May feel too heavy for your oily skin');
+                rating = 'Proceed with Caution';
+            }
+            if (skinType === 'sensitive' && (lower.includes('fragrance') || lower.includes('parfum'))) {
+                concernsList.push('Fragrance: Can irritate your sensitive skin');
+                rating = 'Proceed with Caution';
+            }
+            if ((skinType === 'dry' || skinType === 'sensitive') && lower.includes('alcohol denat')) {
+                concernsList.push('Drying alcohol: Can strip natural oils from your ' + skinType + ' skin');
+                rating = 'Not a Match';
+            }
+
+            // Generate explanation
+            if (rating === 'Great Match') {
+                explanation = `Excellent choice for your ${skinType} skin! This formula includes ingredients that work well with your skin type. ${beneficial.length > 0 ? 'The beneficial ingredients will help address your needs without irritation.' : 'The overall formula appears balanced and suitable.'}`;
+            } else if (rating === 'Proceed with Caution') {
+                explanation = `This might work for your ${skinType} skin, but watch for potential issues. ${concernsList[0]?.split(':')[1] || 'Some ingredients may not be ideal.'} Consider patch testing on a small area first.`;
+            } else {
+                explanation = `Not recommended for your ${skinType} skin. ${concernsList[0]?.split(':')[1] || 'The formulation contains ingredients that could cause problems.'} We recommend looking for alternatives better suited to your skin type.`;
+            }
+
+            return {
+                rating: rating,
+                explanation: explanation,
+                beneficial: beneficial,
+                concerns: concernsList
+            };
+        }
+
+        function displayResults(analysis) {
+            const ratingClass = analysis.rating === 'Great Match' ? 'great-match' : 
+                               analysis.rating === 'Proceed with Caution' ? 'caution' : 'not-match';
+            
+            const ratingIcon = analysis.rating === 'Great Match' ? '✓' : 
+                              analysis.rating === 'Proceed with Caution' ? '⚠️' : '✗';
+
+            let html = `
+                <div class="result-card ${ratingClass}">
+                    <span class="result-badge">${ratingIcon} ${analysis.rating}</span>
+                    <h3>Analysis for Your ${capitalize(userProfile.skinType)} Skin</h3>
+                    <p>${analysis.explanation}</p>
+            `;
+
+            if (analysis.beneficial && analysis.beneficial.length > 0) {
+                html += `
+                    <div class="key-ingredients">
+                        <h4>✨ Key Benefits for You:</h4>
+                        <ul>
+                            ${analysis.beneficial.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            if (analysis.concerns && analysis.concerns.length > 0) {
+                html += `
+                    <div class="key-ingredients">
+                        <h4>⚠️ Watch Out For:</h4>
+                        <ul>
+                            ${analysis.concerns.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            document.getElementById('results').innerHTML = html;
+        }
+
+        function editProfile() {
+            if (confirm('Go back to edit your profile? Your scan history will be saved.')) {
+                window.location.href = 'onboarding.html';
+            }
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('decoded_current_user');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Initialize
+        window.onload = loadUserData;
+    </script>
+</body>
+</html>
         :root {
             --cream: #FBF8F3;
          <!DOCTYPE html>
