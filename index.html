@@ -4,7 +4,412 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decoded - Skincare, Decoded.</title>
+    <link href="https://fonts.googleapis.<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decoded - Sign In</title>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FBF8F3;
+            --sage: #A8B5A0;
+            --deep-sage: #5F7158;
+            --clay: #D4A89A;
+            --terra: #B67B68;
+            --charcoal: #2C2C2C;
+            --soft-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Epilogue', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #F0EBE3 100%);
+            color: var(--charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            max-width: 450px;
+            width: 100%;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--deep-sage);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: var(--terra);
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 32px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            font-family: 'Epilogue', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--deep-sage), var(--sage));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(95, 113, 88, 0.3);
+            margin-top: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(95, 113, 88, 0.4);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #E0E0E0;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            background: white;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .social-btn:hover {
+            border-color: var(--sage);
+            background: var(--cream);
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .toggle-form a {
+            color: var(--deep-sage);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #FFEBEE;
+            color: #C62828;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .success-message {
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo">Decoded</div>
+        <div class="tagline">Skincare, Decoded.</div>
+
+        <!-- Sign In Form -->
+        <div id="signInForm">
+            <h2>Welcome Back</h2>
+            <p class="subtitle">Sign in to continue your skincare journey</p>
+
+            <div class="error-message" id="signInError"></div>
+
+            <form onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label for="signInEmail">Email</label>
+                    <input type="email" id="signInEmail" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signInPassword">Password</label>
+                    <input type="password" id="signInPassword" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+
+            <div class="divider">or</div>
+
+            <button class="social-btn" onclick="signInWithGoogle()">
+                <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.593.102-1.17.282-1.709V4.958H.957C.347 6.173 0 7.548 0 9c0 1.452.348 2.827.957 4.042l3.007-2.335z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+                Continue with Google
+            </button>
+
+            <div class="toggle-form">
+                Don't have an account? <a href="#" onclick="showSignUp(); return false;">Sign Up</a>
+            </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signUpForm" style="display: none;">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join thousands making smarter skincare choices</p>
+
+            <div class="error-message" id="signUpError"></div>
+            <div class="success-message" id="signUpSuccess"></div>
+
+            <form onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label for="signUpName">Full Name</label>
+                    <input type="text" id="signUpName" placeholder="Jane Smith" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signUpEmail">Email</label>
+                    <input type="email" id="signUpEmail" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signUpPassword">Password</label>
+                    <input type="password" id="signUpPassword" placeholder="At least 8 characters" required minlength="8">
+                </div>
+
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+
+            <div class="divider">or</div>
+
+            <button class="social-btn" onclick="signUpWithGoogle()">
+                <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.593.102-1.17.282-1.709V4.958H.957C.347 6.173 0 7.548 0 9c0 1.452.348 2.827.957 4.042l3.007-2.335z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+                Sign up with Google
+            </button>
+
+            <div class="toggle-form">
+                Already have an account? <a href="#" onclick="showSignIn(); return false;">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between sign in and sign up
+        function showSignUp() {
+            document.getElementById('signInForm').style.display = 'none';
+            document.getElementById('signUpForm').style.display = 'block';
+        }
+
+        function showSignIn() {
+            document.getElementById('signUpForm').style.display = 'none';
+            document.getElementById('signInForm').style.display = 'block';
+        }
+
+        // Handle Sign In
+        function handleSignIn(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('signInEmail').value;
+            const password = document.getElementById('signInPassword').value;
+
+            // Check if user exists in localStorage
+            const users = JSON.parse(localStorage.getItem('decoded_users') || '{}');
+            
+            if (users[email] && users[email].password === password) {
+                // Store current user
+                localStorage.setItem('decoded_current_user', email);
+                
+                // Check if user has completed onboarding
+                const userData = users[email];
+                if (userData.profile && userData.profile.skinType) {
+                    // Go directly to scanner
+                    window.location.href = 'scanner.html';
+                } else {
+                    // Go to onboarding
+                    window.location.href = 'onboarding.html';
+                }
+            } else {
+                showError('signInError', 'Invalid email or password');
+            }
+        }
+
+        // Handle Sign Up
+        function handleSignUp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('signUpName').value;
+            const email = document.getElementById('signUpEmail').value;
+            const password = document.getElementById('signUpPassword').value;
+
+            // Check if user already exists
+            const users = JSON.parse(localStorage.getItem('decoded_users') || '{}');
+            
+            if (users[email]) {
+                showError('signUpError', 'An account with this email already exists');
+                return;
+            }
+
+            // Create new user
+            users[email] = {
+                name: name,
+                password: password,
+                email: email,
+                createdAt: new Date().toISOString(),
+                profile: null
+            };
+
+            localStorage.setItem('decoded_users', JSON.stringify(users));
+            localStorage.setItem('decoded_current_user', email);
+
+            // Show success message
+            showSuccess('signUpSuccess', 'Account created! Redirecting to onboarding...');
+            
+            // Redirect to onboarding after 1 second
+            setTimeout(() => {
+                window.location.href = 'onboarding.html';
+            }, 1000);
+        }
+
+        // Social sign in (simulated)
+        function signInWithGoogle() {
+            alert('Google Sign-In would be integrated here using Firebase Auth or Google OAuth');
+            // In production, use Firebase: firebase.auth().signInWithPopup(googleProvider)
+        }
+
+        function signUpWithGoogle() {
+            alert('Google Sign-Up would be integrated here using Firebase Auth or Google OAuth');
+            // In production, use Firebase: firebase.auth().signInWithPopup(googleProvider)
+        }
+
+        // Helper functions
+        function showError(elementId, message) {
+            const errorDiv = document.getElementById(elementId);
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(elementId, message) {
+            const successDiv = document.getElementById(elementId);
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+com/css2?family=Epilogue:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --cream: #FBF8F3;
